@@ -7,7 +7,7 @@
 import os
 import googleapiclient.discovery
 
-def main():
+def search(query):
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -20,11 +20,14 @@ def main():
         api_service_name, api_version, developerKey = DEVELOPER_KEY)
 
     request = youtube.search().list(
-        part="snippet"
+        part="snippet",
+        q = query, 
+        type = "channel"
+        
     )
     response = request.execute()
 
     print(response)
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__search__":
+    search()
