@@ -10,7 +10,7 @@ import googleapiclient.discovery
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-def channels():
+def channelInfo(channelId):
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -24,9 +24,12 @@ def channels():
 
     request = youtube.channels().list(
         part="contentDetails",
-        id="UCsBjURrPoezykLs9EqgamOA"
+        id=channelId,
     )
+    
     response = request.execute()
+    return response
+
 
     '''
     {
@@ -54,7 +57,3 @@ def channels():
     all_videos = items[0].contentDetails.relatedPlaylists.uploads
 
     '''
-    print(response)
-
-if __name__ == "__channels__":
-    channels()

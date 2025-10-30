@@ -8,7 +8,7 @@ import os
 
 import googleapiclient.discovery
 
-def playlist():
+def playlist(playlistId):
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -21,12 +21,15 @@ def playlist():
         api_service_name, api_version, developerKey = DEVELOPER_KEY)
 
     request = youtube.playlistItems().list(
-        part="contentDetails",
-        playlistId="UUsBjURrPoezykLs9EqgamOA"
+        part="snippet",
+        playlistId=playlistId,
+        maxResults=50,
+
     )
     response = request.execute()
 
-    print(response)
+    return response
+
 
     '''
     items[x]
@@ -89,6 +92,3 @@ def playlist():
     }
 
     '''
-
-if __name__ == "__playlist__":
-    playlist()

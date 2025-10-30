@@ -27,7 +27,4 @@ def search(query):
     )
     response = request.execute()
 
-    print(response)
-
-if __name__ == "__search__":
-    search()
+    return response
