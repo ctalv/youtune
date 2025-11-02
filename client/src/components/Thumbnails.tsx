@@ -23,13 +23,21 @@ function Thumbnail({ id, img, title }: ThumbnailProps) {
 
 export default function Thumbnails({list}: ThumbnailsProps) {
   const thumbnailList = list.map((item) => (
+    <li>
         <Thumbnail
             id={item.videoId}
             img={item.thumbnail}
             title={item.title}
         />
+        </li>
             
     ));
 
-    return <>{thumbnailList}</>
+    return (
+    <>
+    <ul>
+    {thumbnailList}
+    </ul>
+    </>
+  )
 }

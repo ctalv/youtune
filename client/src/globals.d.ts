@@ -13,4 +13,11 @@ declare global {
     thumbnail: string;
     };
 
+  interface ChannelItem {
+    pk: number
+    channelId: string
+    allVideosPlaylistId: string 
+    title: string
+    channelImg: string
+  };
 }
