@@ -20,4 +20,9 @@ declare global {
     title: string
     channelImg: string
   };
+
+  interface CategoryItem {
+    pk: number
+    title: string
+  };
 }

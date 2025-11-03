@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import "../assets/styles/thumbnails.css"
 
 type ThumbnailProps = {
@@ -11,33 +12,37 @@ type ThumbnailsProps = {
 };
 
 function Thumbnail({ id, img, title }: ThumbnailProps) {
+  const videoLink = `/video/${id}`
+  
   return (
+    <Link to={videoLink}>
     <img  
       className="thumbnail-img"
       src={img}
       alt={title}
       data-id={id}  
       />
+      </Link>
   );
 }
 
 export default function Thumbnails({list}: ThumbnailsProps) {
   const thumbnailList = list.map((item) => (
-    <li>
+    <div>
         <Thumbnail
-            id={item.videoId}
+            id={String(item.pk)}
             img={item.thumbnail}
             title={item.title}
         />
-      </li>
+      </div>
             
     ));
 
     return (
     <>
-    <ul>
-    {thumbnailList}
-    </ul>
+      <div>
+        {thumbnailList}
+      </div>
     </>
   )
 }
