@@ -29,7 +29,7 @@ export default function Thumbnails({list}: ThumbnailsProps) {
             img={item.thumbnail}
             title={item.title}
         />
-        </li>
+      </li>
             
     ));
 
