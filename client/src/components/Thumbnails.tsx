@@ -1,10 +1,10 @@
+import "../assets/styles/thumbnails.css"
+
 type ThumbnailProps = {
   id: string;
   img: string;
   title: string;
 };
-
-
 
 type ThumbnailsProps = {
   list: VideoItem[];
@@ -13,7 +13,7 @@ type ThumbnailsProps = {
 function Thumbnail({ id, img, title }: ThumbnailProps) {
   return (
     <img  
-      className="thumbnail"
+      className="thumbnail-img"
       src={img}
       alt={title}
       data-id={id}  
