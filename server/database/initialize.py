@@ -39,7 +39,7 @@ Channels:
 - channel_id: string
 - uploads_id: string 
 - title: string
-- picture: string (reference to file system or url)
+- channel_img: string (reference to file system or url)
 
 Videos:
 - id: int
