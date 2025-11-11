@@ -1,7 +1,28 @@
 import { useParams } from "react-router";
 import { thumbnailArray } from "../test-data";
 
+
 export default function VideoPage() {
+  const iframe = document.getElementById("youtube-iframe");
+
+  function handleIframeLoad() {
+    console.log(EventTarget)
+
+
+    console.log("Iframe content has loaded via addEventListener!");
+
+    // .ytp-chrome-top
+    // .ytp-gradient-bottom 
+    // .ytp-youtube-button
+    // .ytp-pause-overlay-container
+  }
+
+  if (iframe) {
+
+    iframe.addEventListener("load", handleIframeLoad)
+
+  }
+
   const { pk } = useParams();
   const videoItem = thumbnailArray.find((item) => item.pk === Number(pk));
 
@@ -9,22 +30,27 @@ export default function VideoPage() {
     return <div>Video not found {pk}</div>;
   }
 
-  const url = `https://www.youtube.com/embed/${videoItem.videoId}`;
+  const url = `https://www.youtube.com/embed/${videoItem.videoId}?autoplay=1&modestbranding=1&rel=0`;
 
   return (
     <>
-    <div>
+      <div>
         <div>
-            {videoItem.title}
+          {videoItem.title}
         </div>
-        <iframe width="420" height="315"
-            src={url}>
-        </iframe> 
+        <iframe
+          id="youtube-iframe"
+          width="800"
+          height="500"
+          className="video-frame"
+          onLoad={handleIframeLoad}
+          src={url}>
+        </iframe>
         <div>
-            {videoItem.description}
+          {videoItem.description}
         </div>
-    </div>
+      </div>
     </>
   );
 }
- 
+
