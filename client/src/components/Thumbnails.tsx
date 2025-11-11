@@ -13,34 +13,36 @@ type ThumbnailsProps = {
 
 function Thumbnail({ id, img, title }: ThumbnailProps) {
   const videoLink = `/video/${id}`
-  
+
   return (
-    <Link to={videoLink}>
-    <img  
-      className="thumbnail-img"
-      src={img}
-      alt={title}
-      data-id={id}  
+    <Link to={videoLink} title={title}>
+      <img
+        className="thumbnail-img"
+        src={img}
+        alt={title}
+        data-id={id}
+
       />
-      </Link>
+      <h3 className='thumbnail-title'>{title}</h3>
+    </Link>
   );
 }
 
-export default function Thumbnails({list}: ThumbnailsProps) {
+export default function Thumbnails({ list }: ThumbnailsProps) {
   const thumbnailList = list.map((item) => (
-    <div>
-        <Thumbnail
-            id={String(item.pk)}
-            img={item.thumbnail}
-            title={item.title}
-        />
-      </div>
-            
-    ));
+    <div className='thumbnail-container'>
+      <Thumbnail
+        id={String(item.pk)}
+        img={item.thumbnail}
+        title={item.title}
+      />
+    </div>
 
-    return (
+  ));
+
+  return (
     <>
-      <div>
+      <div className='thubnail-list'>
         {thumbnailList}
       </div>
     </>
