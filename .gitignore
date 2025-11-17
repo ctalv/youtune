@@ -3,3 +3,4 @@ client/node_modules
 .env
 .venv
 server/youtube-api/__pycache__
+youtune/youtube.db
