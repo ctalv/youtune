@@ -40,8 +40,8 @@ export default function VideoPage() {
         </div>
         <iframe
           id="youtube-iframe"
-          width="800"
-          height="500"
+          width="700"
+          height="350"
           className="video-frame"
           onLoad={handleIframeLoad}
           src={url}>
